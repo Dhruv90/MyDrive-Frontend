@@ -1,0 +1,9 @@
+.DrivePage {
+  display: flex;
+  flex-direction: column;
+  flex: 5;
+  /* margin-top: 4rem; */
+  padding: 3rem;
+  align-items: center;
+  /* justify-content: center; */
+}

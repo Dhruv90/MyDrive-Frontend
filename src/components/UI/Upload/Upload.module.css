@@ -1,0 +1,32 @@
+.Upload {
+  display: inline-block;
+  width: 8rem;
+  height: 2rem;
+  line-height: 2rem;
+  cursor: pointer;
+  background-color: #c2bcbc;
+  /* position: absolute;
+  top: 10rem;
+  left: 30rem; */
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 3px;
+  box-shadow: 1px;
+  color: black;
+  cursor: pointer;
+  margin-top: 3rem;
+}
+
+.Upload label {
+  cursor: pointer;
+}
+
+.Upload:hover,
+.Upload:active{
+  background-color: black;
+  color: #c2bcbc;
+}
+
+input {
+  display: none;
+}
