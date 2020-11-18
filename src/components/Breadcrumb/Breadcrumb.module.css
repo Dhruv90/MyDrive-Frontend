@@ -1,0 +1,20 @@
+.Breadcrumb{
+  position: fixed;
+  width: 100%;
+  top: 4rem;
+  left: 0rem;
+  padding: 0.2rem;
+  text-align: center;
+  background-color:#F4CEC4;
+  color: #262839;
+}
+
+.Breadcrumb a {
+  font-size: 0.8rem;
+}
+
+@media (min-width: 700px){
+  .Breadcrumb{
+    font-size: inherit;  
+  }
+}

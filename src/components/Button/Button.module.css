@@ -1,0 +1,33 @@
+.Button {
+  box-sizing: border-box;
+  width: 6rem;
+  height: 2rem;
+  line-height: 1.5rem;
+  background-color: #F0BEB0;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 3px;
+  box-shadow: 1px;
+  color: #3D405B;
+  cursor: pointer;
+  font-size: small;
+}
+
+.Button:hover,
+.Button:active {
+  background-color: #F4F1DE;
+  color: #F0BEB0;
+}
+
+.ActiveButton {
+  width: 8rem;
+  height: 2rem;
+  line-height: 2rem;
+  background-color: #F4F1DE;
+    text-align: center;
+  border: 1px solid black;
+  border-radius: 3px;
+  box-shadow: 1px;
+  color: #F0BEB0;
+  cursor: pointer;
+}

@@ -1,0 +1,74 @@
+.MoveToFolder {
+  position: fixed;
+  top: 40vh;
+  left: 25%;
+  width: 50%;
+  /* height: 40vh; */
+  border: 1px solid black;
+  padding: 2rem;
+  border-radius: 5px;
+  background-color: white;
+  z-index: 100;
+}
+
+.folder {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 3rem;
+  padding-right: 0.3rem;
+  line-height: 3rem;
+  cursor: pointer;
+}
+
+.folder:hover{
+  background-color: peachpuff;
+}
+
+.folderIcon {
+  /* justify-self: center; */
+  flex: 1;
+}
+
+.folderName {
+  flex: 10
+}
+
+.folderHeader {
+  display: flex;
+  box-sizing: border-box;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 3rem;
+  line-height: 3rem;
+  border-bottom: 1px solid black;
+  padding-right: 1rem;
+  margin: 1rem;
+}
+
+.backIcon {
+  flex: 1;
+  cursor: pointer;
+}
+
+.backIcon:hover {
+  border: 1px solid grey;
+}
+
+.currentFolderName {
+  flex: 6;
+  font-size: large;
+}
+
+.MoveToFolder button {
+  flex: 4;
+  background-color: #F7DED7;
+  font-size: 0.8rem;
+  border-radius: 2px;
+  border: 1px solid #3D405B;
+}
+
+
+

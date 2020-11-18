@@ -1,9 +1,9 @@
 import React from 'react';
 import classes from './Logo.module.css'
 
-const logo = props => {
+const logo = () => {
   return (
-    <span className={classes.Logo}>My Drive</span>
+    <span className={classes.Logo}><a href='/'>My Drive</a></span>
   )
 }
 

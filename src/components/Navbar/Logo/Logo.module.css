@@ -1,9 +1,15 @@
 .Logo {
-  padding: 0.5rem;
-  margin: 0.5rem;
+  padding: 0.1rem;
+  margin: 0.1rem;
   font-weight: bold;
   font-style: italic;
   font-family: serif;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   text-shadow: rgb(230, 81, 48);
+}
+
+@media (min-width: 850px) {
+  .Logo {
+    font-size: 1.5rem;
+  }
 }

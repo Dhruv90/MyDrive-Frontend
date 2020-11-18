@@ -7,6 +7,44 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  background-color: black;
-  color: white;
+  background-color: #3D405B;
+  color: #F4F1DE;
+  z-index: 100;
+  /* padding-right: 3rem; */
+}
+
+/* .actionButtons{
+  display: none;
+} */
+
+.actionButtons {
+  display: flex;
+  width: 45%;
+  max-width: 250px;
+  justify-content: space-between;
+}
+
+.NavItems {
+  display: none;
+  width: 50%;
+}
+
+.HamburgerMenu {
+  margin-right: 1rem;
+}
+
+@media (min-width: 850px) {
+  .NavItems{
+    display: inline;
+  }
+
+  .HamburgerMenu {
+    display: none;
+  }
+  .actionButtons {
+    display: flex;
+    width: 25%;
+    max-width: 250px;
+    justify-content: space-between;
+  }
 }

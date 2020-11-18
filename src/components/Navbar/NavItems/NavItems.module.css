@@ -1,6 +1,19 @@
-.Navlinks {
+.NavItems {
   display: flex;
-  width: 30%;
   justify-self: flex-end;
   justify-content: flex-end;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.5rem;
+  margin: 1rem;
+  color: #F2EDEB;
+}
+
+a:hover,
+a:active,
+a.active {
+  color: white;
 }

@@ -1,16 +1,24 @@
 .Sidebar {
   padding: 0.5rem;
-  flex: 1;
-  display: flex;
+  box-sizing: border-box;
+  max-width: 200px;
+  position: fixed;
+  right: 0;
+  top:4rem;
+  z-index: 1000;
   flex-direction: column;
-  background-color: rgb(213, 209, 209);
-  margin-top: 4rem;
+  background-color: #E4E5ED;
   height: 100vh;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
 }
 
 .Sidebar a {
   text-align: left;
-  color: black;
+  color: #3D405B;
   /* border: 1px solid white; */
+}
+
+.Sidebar form, .Sidebar button{
+  margin: 1rem
 }

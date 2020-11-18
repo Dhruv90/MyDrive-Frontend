@@ -1,16 +1,22 @@
-import React from 'react';
-import NavItem from '../NavItem/NavItem';
-import classes from './Sidebar.module.css'
-import UploadButton from '../UI/Upload/Upload'
+import React, {useContext} from 'react';
+import classes from './Sidebar.module.css';
+import {AuthContext} from '../../context/authContext';
+import TotalStorage from '../TotalStorage/TotalStorage'
 
-const sidebar = props => {
-  return (
-    <div className={classes.Sidebar}>
-      <NavItem path='/drive/photos'>Photos</NavItem>
-      <NavItem path='/drive/files'>Files</NavItem>
-      <UploadButton />
-    </div>
-  )
+
+const Sidebar = props => {
+  const logout = useContext(AuthContext).logout;
+
+  let sidebar = null;
+
+  if(props.display) {
+    sidebar =  <div className={classes.Sidebar}>
+                <a onClick={logout} href='/'>Logout</a>
+                 <TotalStorage /> 
+              </div>
+  }
+
+  return sidebar
 }
 
-export default sidebar;
+export default Sidebar;

@@ -1,0 +1,42 @@
+.SelectOptions{
+  box-sizing: border-box;
+  height: 2.5rem;
+  border-radius: 3px;
+  flex: 3;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  position: fixed;
+  top: 4.1rem;
+  right: 1rem;
+  z-index: 50;
+  font-size: small;
+  /* background-color: #FBEFEB;
+  border: 1px solid #3D405B;
+  border-radius: 10px; */
+  /* align-self: flex-end; */
+}
+
+.checked {
+  /* box-sizing: border-box;
+  height: 2.5rem;
+  border-radius: 3px;
+  flex: 3;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  position: fixed;
+  top: 4.1rem;
+  right: 1rem;
+  z-index: 50;
+  font-size: small; */
+  background-color: #FBEFEB;
+  border: 1px solid #3D405B;
+  border-radius: 10px;
+}
+
+.SelectOptions button {
+  font-size: x-small;
+}

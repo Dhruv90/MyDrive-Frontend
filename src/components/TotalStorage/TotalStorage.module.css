@@ -1,0 +1,29 @@
+.TotalStorage {
+  height: 1rem;
+  margin-top: 0.7rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
+.TotalStorage label {
+  font-size: small;
+  color: #3D405B;
+  width: 100%;
+}
+
+
+
+@media (min-width: 850px) {
+  .TotalStorage {
+    height: 1rem;
+    margin-top: 0.7rem;
+    margin-right: 2rem;
+    margin-left: 0;
+  }
+  
+  .TotalStorage label {
+    /* font-size: small; */
+    color: white;
+    width: 100%;
+  }
+}
