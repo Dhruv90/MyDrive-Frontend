@@ -11,13 +11,13 @@ const Preview = props => {
 
   if(extension === 'jpg' || extension === 'jpeg' || extension === 'png' || extension === 'gif' ){
     previewer = (
-      <img alt={props.file._id} className = {classes.image} src = {`http://localhost:3001/files/${props.file.filename}`}></img>
+      <img alt={props.file._id} className = {classes.image} src = {`https://mydrive-fullstack.herokuapp.com/files/${props.file.filename}`}></img>
     )
   } else if(extension === 'pdf'){
     previewer = (
       <FileViewer
         fileType={extension}
-        filePath={`http://localhost:3001/files/${props.file.filename}`}
+        filePath={`https://mydrive-fullstack.herokuapp.com/files/${props.file.filename}`}
         onError={() => alert('Problem Occured, please try again')}/>
     );
   } else {

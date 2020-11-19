@@ -24,7 +24,7 @@ const NewFolderButton = props => {
     <React.Fragment>
       {modal}
       <Button click = {toggleModal}>
-          New Folder
+          + Folder
       </Button>
     </React.Fragment>
   )

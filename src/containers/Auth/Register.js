@@ -27,7 +27,6 @@ const Auth = () => {
     } else {
       setRegisterSuccessMessage(registerStatus.message)
       setMessageStyle(`${classes.message} ${classes.failure}`)
-
     }
   };
 

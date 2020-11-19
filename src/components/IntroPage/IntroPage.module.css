@@ -1,5 +1,5 @@
 .IntroBackground {
-  background: linear-gradient(rgba(61, 64, 91, 0.24), rgba(61, 64, 91, 0.24)), url('http://localhost:3001/files/icons/intro');
+  background: linear-gradient(rgba(61, 64, 91, 0.24), rgba(61, 64, 91, 0.24)), url('https://mydrive-fullstack.herokuapp.com/files/icons/intro');
   background-size: cover;
   width: 100%;
   height: 100vh;

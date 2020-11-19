@@ -73,9 +73,9 @@ const Files = (props) => {
       {previewComponent}
       {props.files.slice(0, props.number).map((file) => {
         const extension = file.filename.split(".")[1].toLowerCase();
-        let iconPath = `http://localhost:3001/files/icons/${extension}`
+        let iconPath = `https://mydrive-fullstack.herokuapp.com/files/icons/${extension}`
         if(extension === 'jpeg' || extension === 'jpg' || extension === 'png'){
-          iconPath = `http://localhost:3001/files/thumbnail/${file.filename}`
+          iconPath = `https://mydrive-fullstack.herokuapp.com/files/thumbnail/${file.filename}`
         } 
         return (
           <Card className={materialClasses.root} sm={6} l={3} onClick={() => fileClickHandler(file)} key={file.filename} >
