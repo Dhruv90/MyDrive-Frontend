@@ -71,7 +71,7 @@ const Auth = () => {
 
   const googleFailure = (response) => {
     console.log(response);
-    loginSuccessMessage('Not Able to Login, Please Try Again');
+    setLoginSuccessMessage('Not Able to Login, Please Try Again');
     setMessageStyle(`${classes.message} ${classes.failure}`)
   }
 

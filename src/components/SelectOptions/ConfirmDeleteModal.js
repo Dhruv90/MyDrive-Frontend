@@ -4,20 +4,18 @@ import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
 import { useLocation } from 'react-router-dom'
 
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
+// function rand() {
+//   return Math.round(Math.random() * 20) - 10;
+// }
 
-function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
+// function getModalStyle() {
 
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
-  };
-}
+//   return {
+//     top: `50%`,
+//     left: `50%`,
+//     transform: `translate(-${top}%, -${left}%)`,
+//   };
+// }
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -36,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ConfirmDeleteModal = props => {
   const classes = useStyles();
-  const [modalStyle] = React.useState(getModalStyle);
+  // const [modalStyle] = React.useState(getModalStyle);
 
   const location = useLocation();
   let parent = location.pathname.split('/')[1] || '/';
@@ -44,11 +42,15 @@ const ConfirmDeleteModal = props => {
   console.log(parent);
   
   const body = (
-    <div style={modalStyle} className={classes.paper}>
+    <div  style={{ top: `30%`,
+                  left: `20%`,
+                  fontSize: 'small'
+                }} 
+          className={classes.paper}
+    >
        <h2 id="Confirm Delete">Are you sure you want to delete these Files/Folders(and all their contents)?</h2>
         <Button m={2} type='button' onClick = {() => {props.confirm(); props.cancel();}} variant="contained" color="secondary" >Confirm</Button>
         <Button m={2} type='button' onClick = {props.cancel}  variant="contained" color="primary">Cancel</Button>
-      {/* </form> */}
     </div>
   );
 

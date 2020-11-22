@@ -211,6 +211,11 @@ const AllFilesProvider = (props) => {
           await downloadFile(files[i].filename)
         }
       }
+      for(let i=0; i<folders.length; i++){
+        if(folders[i].parent == id){
+          await downloadFolder(folders[i]._id)
+        }
+      }
     } else {
       alert('Not Authorized, Please login to your account')
     }  

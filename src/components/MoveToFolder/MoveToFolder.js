@@ -74,7 +74,7 @@ const MoveToFolder = (props) => {
               props.toggle();
             }}
           >
-          Move Files To This Folder
+          Move Here
         </button>
       </header>
       {currentPathFolders.map((folder) => {
@@ -85,7 +85,7 @@ const MoveToFolder = (props) => {
             key={folder._id}
           >
             <FolderIcon className={classes.folderIcon} />
-            <span className={classes.folderName}>{folder.name}</span>
+            <span className={classes.folderName}> {folder.name}</span>
           </li>
         );
       })}
