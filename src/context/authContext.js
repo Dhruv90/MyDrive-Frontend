@@ -185,6 +185,7 @@ const AuthContextProvider = (props) => {
 
   const googleLogin = async (googleResponse) => {
     try {
+      setProcessing(true)
       const body = {
         email: googleResponse.profileObj.email,
         token: googleResponse.tokenId
@@ -192,11 +193,14 @@ const AuthContextProvider = (props) => {
       const res = await instance.post('/auth/googleLogin', body)
       if(res.status === 200){
         refreshGoogleToken(googleResponse)
+        setProcessing(false)
         return {message: res.data.message, status: true}
       } else {
+        setProcessing(false)
         throw new Error('Error Logging In, please try again')
       }
     } catch(err) {
+      setProcessing(false)
       console.log(err)
       return {message: err.message, status: false}
     }
