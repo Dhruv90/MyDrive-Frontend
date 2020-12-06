@@ -12,11 +12,6 @@ const IntroPage = () => {
     history.push('/auth')
   }
 
-  const redirectToRegister = () => {
-    history.push('/register')
-  }
-
-
   return (
     <React.Fragment>
         <div className={classes.IntroBackground}></div>

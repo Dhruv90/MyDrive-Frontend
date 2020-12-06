@@ -3,6 +3,7 @@ import instance from '../instance'
 
 export const AuthContext = React.createContext({
   isAuth: false,
+  processing: false,
   confirmUser: () => {},
   checkAuth: () => {},
   onAuth: () => {},
@@ -16,6 +17,7 @@ export const AuthContext = React.createContext({
 
 const AuthContextProvider = (props) => {
   const [isAuth, setisAuth] = useState(false);
+  const [processing, setProcessing] = useState(false);
 
   const logout = useCallback(() => {
     if (isAuth) {
@@ -47,6 +49,7 @@ const AuthContextProvider = (props) => {
 
   const onAuth = async (email, password) => {
     try {
+      setProcessing(true)
       const res = await instance.post("/auth/login", {
         email: email,
         password: password,
@@ -63,10 +66,12 @@ const AuthContextProvider = (props) => {
         // }, remainingMilliseconds);
         setisAuth(true);
         refreshToken(res.data.token)
+        setProcessing(false)    
         return { message: res.data.message, loginStatus: true };
       }
       
     } catch (err) {
+      setProcessing(false)    
       let message = err.data.message;
       if (err.status === 422) {
         err.data.data.forEach((error) => {
@@ -83,7 +88,7 @@ const AuthContextProvider = (props) => {
 
   const refreshToken = async (token) => {
 
-    const remainingMilliseconds = 3600 * 1000;
+    let remainingMilliseconds = 3600 * 1000;
     const getNewToken = async () => {
       try{
         const response = await instance.post('/auth/refreshToken', token);
@@ -198,7 +203,7 @@ const AuthContextProvider = (props) => {
   }
 
   const refreshGoogleToken = async(googleResponse) => {
-    const refreshTime = (googleResponse.tokenObj.expires_in || 55*60) * 1000
+    let refreshTime = (googleResponse.tokenObj.expires_in || 55*60) * 1000
 
     const refreshToken = async () => {
       const newAuthRes = await googleResponse.reloadAuthResponse();
@@ -217,6 +222,7 @@ const AuthContextProvider = (props) => {
     <AuthContext.Provider
       value={{
         isAuth: isAuth,
+        processing: processing,
         checkAuth: checkAuth,
         onAuth: onAuth,
         logout: logout,

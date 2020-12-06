@@ -1,6 +1,4 @@
 .background {
-  /* background-size: cover; */
-  /* background-image: url('https://cutewallpaper.org/21/cartoon-cloud-background/This-Cartoon-Clouds-Background-Png,-Hd-Wallpapers-.jpg'); */
   background-color: #F0BEB0;
   position: fixed;
   top: 2rem;
@@ -13,39 +11,57 @@
   box-sizing: border-box;
   z-index: 1;
   width: 80%;
+  max-width: 800px;
   height: 75vh;
   margin-top: 10rem;
-  text-align: center;
+  /* text-align: center; */
   background-color: #FCFBF6;
   border: solid 1px #3D405B;
   border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 1rem;
 }
 
-.formControl {
+.googleLogin {
+  text-align: center;
+  width: 50%;
+}
+
+
+.formControl, .buttonControl {
   margin-top: 1rem;
-  padding: 0.5rem;
+  padding: 0.2rem;
   display: flex;
-  width: 70%;
   justify-content: center;
   height: 2rem;
   line-height: 2rem;
-}
-
-.formControl input {
-  flex: 2;
-  display: inline-block;
 }
 
 .formControl label {
   flex: 1
 }
 
-.formControl button {
-  width: 30%;
+.formControl input {
+  box-sizing: border-box;
+  flex: 3;
+  display: inline-block;
+}
+
+.buttonControl {
+  justify-content: flex-end;
+  /* align-items: flex-end; */
+}
+
+.buttonControl button {
+  height: 2rem;
+  width: 36%;
+  margin-right: 0.4rem;
 }
 
 .registerText {
-  margin-top: 3rem;
+  margin-top: 1rem;
   text-align: center;
   padding: 1rem;
 }
@@ -55,6 +71,7 @@
 }
 
 .message {
+  text-align: center;
   display: inline-block;
   border: 1px solid grey;
   border-radius: 20px 20px 0 0;

@@ -11,6 +11,7 @@ export const AllFilesContext = React.createContext({
   selectMode: false,
   uploadPercent: 0,
   uploading: false,
+  processing: false,
   getAllFiles: () => {},
   select: (id) => {},
   uploadFiles: (event) => {},
@@ -25,8 +26,9 @@ export const AllFilesContext = React.createContext({
 
 const AllFilesProvider = (props) => {
   const [files, setFiles] = useState(null);
-  const [folders, setFolders] = useState(null)
+  const [folders, setFolders] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [processing, setProcessing] =  useState(false);
   const [downloading, setDownloading] = useState(false);
   const [selectMode, setSelectMode] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -144,15 +146,18 @@ const AllFilesProvider = (props) => {
   const deleteFile = async (id, filename) => {
     if(isAuth===true){
       try {
+        setProcessing(true)
         const response = await instance.post("/files/delete", { id: id, filename: filename }, {
           headers: {
             Authorization: localStorage.getItem('token')
           }
         });
         if (response.status === 200 || response.status === 201) {
+          setProcessing(false)
           getAllFiles();
         }
       } catch (err) {
+        setProcessing(false)
         console.log(err);
       }
     }else {
@@ -163,19 +168,23 @@ const AllFilesProvider = (props) => {
   const deleteFolder = async (id) => {
     if(isAuth===true){
       try {
+        setProcessing(true)
         const response = await instance.post("/files/deleteFolder", { folderId: id }, {
           headers: {
             Authorization: localStorage.getItem('token')
           }
         });
         if (response.status === 200 || response.status === 201) {
+          setProcessing(false)    
           getAllFolders();
           getAllFiles();
         }
-      } catch (err) {        
+      } catch (err) {    
+        setProcessing(false)    
         alert("Could Not Delete, please try again")
       }
     }else {
+      setProcessing(false)    
       alert('Not Authorized, Please login to your account')
     }
   };
@@ -207,12 +216,12 @@ const AllFilesProvider = (props) => {
   const downloadFolder = async (id) => {
     if(isAuth === true){
       for(let i=0; i<files.length; i++){
-        if(files[i].metadata.parent == id){
+        if(files[i].metadata.parent === id){
           await downloadFile(files[i].filename)
         }
       }
       for(let i=0; i<folders.length; i++){
-        if(folders[i].parent == id){
+        if(folders[i].parent === id){
           await downloadFolder(folders[i]._id)
         }
       }
@@ -264,7 +273,6 @@ const AllFilesProvider = (props) => {
   }
 
   const deleteFiles = async() => {
-
       files.map (async(file) => {
         try{
           if(file.select){
@@ -289,13 +297,14 @@ const AllFilesProvider = (props) => {
   }    
 
   const downloadFiles = async() => {
-
+    setProcessing(true)
     files.map(async(file) => {
       try{
         if(file.select){
           await downloadFile(file.filename)
         }          
       }catch (err) {
+        setProcessing(false)
         alert('Something Went Wrong, please try again later')
       }
     })
@@ -306,9 +315,11 @@ const AllFilesProvider = (props) => {
           await downloadFolder(folder._id)
         }          
       } catch (err) {
+        setProcessing(false)
         alert('Something Went Wrong, please try again later')
       }
   })
+    setProcessing(false)
     resetSelection();
     selectModeToggle();
 }  
@@ -334,6 +345,7 @@ const AllFilesProvider = (props) => {
 
   const createFolder = async(e) => {
     e.preventDefault();
+    setProcessing(true)
     try{
       const name = e.target.name.value;
       const parent = e.target.parent.value;
@@ -346,16 +358,19 @@ const AllFilesProvider = (props) => {
       });
       if(res.status === 200){
         getAllFolders();
-        return 'Folder Created'
+        setProcessing(false)
+        return 'Folder Created';
       } else throw new Error(res.message)
     }catch(err) {
       console.log(err.message);
+      setProcessing(false)
       alert('Something Went Wrong, please try again')
     }
   }
 
   const moveToFolder = async (objectId, folderId) => {
     try {
+      setProcessing(true)    
       const body = {objectId: objectId, parent: folderId}
       const token = localStorage.getItem('token')
       const res = await instance.post("/files/moveToFolder", body, {
@@ -364,6 +379,7 @@ const AllFilesProvider = (props) => {
         }
       });
       if(res.status === 200){
+        setProcessing(false)    
         getAllFolders();
         getAllFiles(); 
         resetSelection();
@@ -376,7 +392,8 @@ const AllFilesProvider = (props) => {
   }
 
   const moveMultipleToFolder = async (folderId) => {
-      try{
+    try{
+        setProcessing(true)
         files.map (async(file) => {
           if(file.select){
             await moveToFolder(file._id, folderId)
@@ -387,10 +404,12 @@ const AllFilesProvider = (props) => {
             await moveToFolder(folder._id, folderId)
           }  
         })
+        setProcessing(false)
         resetSelection();
         selectModeToggle();     
     }catch (err) {
       if(err.statusCode === 401){
+        setProcessing(false)
         logout();
       }
       alert('Something Went Wrong, please try again later')
@@ -420,6 +439,7 @@ const AllFilesProvider = (props) => {
         uploading: uploading,
         uploadPercent: uploadPercent,
         totalStorage: totalStorage,
+        processing: processing,
         getAllFiles: getAllFiles,
         getAllFolders: getAllFolders,
         select: select,

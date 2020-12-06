@@ -4,6 +4,7 @@ import Folders from '../../components/Folders/Folders'
 import {AllFilesContext} from '../../context/filesContext';
 import Message from '../../components/Message/Message'
 import SelectOptions from '../../components/SelectOptions/SelectOptions'
+import Spinner from '../../components/Spinner/Spinner'
 import classes from "./Drive.module.css";
 
 const Drive = () => {
@@ -12,23 +13,20 @@ const Drive = () => {
   const folders = useContext(AllFilesContext).folders; //obtaining all files from backend
   const loading = useContext(AllFilesContext).loading; //UI setting to show loading
   const downloading = useContext(AllFilesContext).downloading; //UI setting to show downloading
+  const processing = useContext(AllFilesContext).processing
   const selectModeToggle = useContext(AllFilesContext).selectModeToggle;
   const select = useContext(AllFilesContext).select;
   const downloadFiles = useContext(AllFilesContext).downloadFiles;
   const deleteFiles = useContext(AllFilesContext).deleteFiles;
   const resetSelection =  useContext(AllFilesContext).resetSelection;
 
-  let quickAccessFiles = null;
   let fetchedFiles = null;
   let fetchedFolders = null;
   let quickAccessMessage = null;
   let selectToggle = null;
 
 
-  const recent = 4; //setting the number of recent quick access files
-
   if ((!files || files.length === 0)) {
-    // quickAccessFiles = <h2>Please upload files</h2>; //default message if no files found
     quickAccessMessage = <h2>Please Upload Files</h2>;
   }
 
@@ -45,11 +43,6 @@ const Drive = () => {
   }
 
   if (!loading && files && files.length > 0) {
-    // quickAccessFiles = (
-    //   <React.Fragment>
-    //     <Files files = {files} number={recent} select={select}/>
-    //   </React.Fragment>
-    // )
     let thisFolderFiles = files.filter(file => {
       return file.metadata.parent === '/'
     })
@@ -100,6 +93,7 @@ const Drive = () => {
       {/* {quickAccessFiles} */}
       {fetchedFolders}
       {fetchedFiles}
+      {processing ? <Spinner /> : null}
     </div>
   );
 };
